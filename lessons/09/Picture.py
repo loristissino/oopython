@@ -1,4 +1,4 @@
-import basic_io
+from basic_io import *
 
 class Picture():
     __slots__ = ('filename', 'width', 'height', 'filetype', 'quality')
