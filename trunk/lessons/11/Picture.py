@@ -1,3 +1,7 @@
+"""
+See http://tinyurl.com/oopython
+"""
+
 from basic_io import *
 from PosInt import *
 from Field import *
@@ -46,7 +50,11 @@ class Picture(object):
             self.outputField(fieldname, field)
 
     def outputField(self, fieldname, field):
-        print(field.getLabel(),': ', self.getAttrByName(fieldname))
+        print(field.getLabel() + ': ', self.getAttrByName(fieldname))
+
+    @staticmethod
+    def getFields(cls):
+        return cls.__fields
 
 if __name__=="__main__":
     img1=Picture()

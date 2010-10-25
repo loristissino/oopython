@@ -1,3 +1,7 @@
+"""
+See http://tinyurl.com/oopython
+"""
+
 class Field():
     def __init__(self, class_constraint, label='',  size=20, alignment='left'):
         self.__class_constraint = class_constraint
