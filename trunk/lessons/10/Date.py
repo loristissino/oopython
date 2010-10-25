@@ -1,22 +1,10 @@
 """
-import datetime
-"""
-"""
-class MyDate(datetime.date):
-   def __new__(cls, value):
-       datetime.date.__new__(cls, datetime.date.fromtimestamp(1)) # strptime(value, "%d/%m/%Y"))
-"""
-
-"""       
-
-class MyDate(datetime):
-   def __new__(self, value):
-       self = datetime.strptime(value, "%d/%m/%Y")
+See http://tinyurl.com/oopython
 """
 
 from datetime import *
 
-class MyDate():
+class Date():
     def __init__(self, value):
         self.__date=datetime.strptime(value, "%d/%m/%Y")
     def getYear(self):
@@ -25,24 +13,47 @@ class MyDate():
         return self.__date.month
     def getDay(self):
         return self.__date.day
+    def __str__(self):
+        return self.__date.strftime("%d/%m/%Y")
 
-    
-n=MyDate('20/10/2010')
+print("Esempio con classe wrapper (1)")    
+n=Date('20/10/2010')
 print(n, type(n))
 print(n.getYear())
 
 
+class Date():
+    def __init__(self, value):
+        self.__date=datetime.strptime(value, "%d/%m/%Y")
+    def __getattr__(self, name):
+        return getattr(self.__date, name)
+    def __str__(self):
+        return self.__date.strftime("%d/%m/%Y")
 
-class MyDate(datetime):
+print("Esempio con classe wrapper (2)")    
+n=Date('20/10/2010')
+print(n, type(n))
+print(n.year)
+
+
+
+class Date(datetime):
     def __new__(cls, *args):
         if len(args) == 1 and isinstance(args[0], str):
-            print("prima chiamata ** ", end='')
-            print(args[0])
-            return super().strptime(args[0], "%d/%m/%Y")
-        print("seconda chiamata ** ", end='')
-        print(*args)
+            return cls.strptime(args[0], "%d/%m/%Y")
         return datetime.__new__(cls, *args)
+    def __str__(self):
+        return self.strftime("%d/%m/%Y")
+            
+print("Esempio con classe derivata")    
+n=Date('12/11/2010')
+print(n, type(n))
+print(n.year)
 
-a=MyDate('12/11/2010')
+n=Date(2010, 12, 31)
+print(n, type(n))
+print(n.year)
+
+
 
 
