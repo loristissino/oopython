@@ -32,21 +32,21 @@ class Picture(object):
 
     def inputData(self):
         print("*** INSERIMENTO DATI PER UNA IMMAGINE ***")
-        for field in self.__fields:
-            self.inputField(field)
+        for fieldname, field in zip(self.__slots__, self.__fields):
+            self.inputField(fieldname, field)
 
-    def inputField(self, field):
+    def inputField(self, fieldname, field):
         message = 'Inserisci un valore per "%s": ' % field.getLabel()
         data=checked_input(message, field.getClassConstraint())
-        self.__setattr__(field.getName(), data)
+        self.__setattr__(fieldname, data)
 
     def outputData(self):
         print('*** DATI DI UNA IMMAGINE ***')
-        for field in self.__fields:
-            self.outputField(field)
+        for fieldname, field in zip(self.__slots__, self.__fields):
+            self.outputField(fieldname, field)
 
-    def outputField(self, field):
-        print(field.getLabel() + ': ', self.getAttrByName(field.getName()))
+    def outputField(self, fieldname, field):
+        print(field.getLabel() + ': ', self.getAttrByName(fieldname))
 
 if __name__=="__main__":
     img1=Picture()
