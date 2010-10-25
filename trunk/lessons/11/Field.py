@@ -1,13 +1,10 @@
 class Field():
-    def __init__(self, name, class_constraint, label='',  size=20, alignment='left'):
-        self.__name = name
+    def __init__(self, class_constraint, label='',  size=20, alignment='left'):
         self.__class_constraint = class_constraint
         self.__label = label
         self.__size = size
         self.__alignment = alignment
 
-    def getName(self):
-        return self.__name
     def getClassConstraint(self):
         return self.__class_constraint
     def getLabel(self):

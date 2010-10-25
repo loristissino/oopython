@@ -9,12 +9,12 @@ class Picture(object):
     nt = collections.namedtuple('fields', 'filename, width, height, filetype, quality, date_taken')
 
     __fields = nt(
-        Field('filename', str, 'nome del file', 30),
-        Field('width', PosInt, 'larghezza', 8, 'right'),
-        Field('height', PosInt, 'altezza', 8, 'right'),
-        Field('filetype', str, 'tipo di file', 5),
-        Field('quality', float, 'qualità immagine', 4, 'right'),
-        Field('date_taken', Date, 'data di ripresa', 8, 'right')
+        Field(str, 'nome del file', 30),
+        Field(PosInt, 'larghezza', 8, 'right'),
+        Field(PosInt, 'altezza', 8, 'right'),
+        Field(str, 'tipo di file', 5),
+        Field(float, 'qualità immagine', 4, 'right'),
+        Field(Date, 'data di ripresa', 8, 'right')
         )
 
     __slots__ = nt._fields
