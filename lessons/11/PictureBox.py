@@ -1,9 +1,10 @@
-import picture
+from Picture import *
 
 class PictureBox(list):
     def showPictures(self):
         for i in range(len(self)):
-            print(self[i].getCompleteDescription())        
+            print(self[i].outputData())
+            
 
 if __name__=='__main__':
     mybox=PictureBox()

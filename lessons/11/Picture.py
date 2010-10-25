@@ -20,7 +20,7 @@ class Picture(object):
     __slots__ = nt._fields
         
     def __setattr__(self, name, value):
-        assert(isinstance(value, getattr(self.__fields, name).getClassConstraint()))  # non funziona perché name è una stringa, non una classe
+        assert(isinstance(value, getattr(self.__fields, name).getClassConstraint()))
         super().__setattr__(name, value)
 
     def getAttrByName(self, name):
@@ -46,12 +46,12 @@ class Picture(object):
             self.outputField(fieldname, field)
 
     def outputField(self, fieldname, field):
-        print(field.getLabel() + ': ', self.getAttrByName(fieldname))
+        print(field.getLabel(),': ', self.getAttrByName(fieldname))
 
 if __name__=="__main__":
     img1=Picture()
     img1.inputData()
     img1.outputData()
-    print(img1.getAttrByName('height'))  # funziona
-    print(img1.getAttrByPosition(2))  # funziona
+    print(img1.getAttrByName('height'))
+    print(img1.getAttrByPosition(2))
 
