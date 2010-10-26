@@ -52,7 +52,7 @@ class Picture(object):
     def outputField(self, fieldname, field):
         print(field.getLabel() + ': ', self.getAttrByName(fieldname))
 
-    @staticmethod
+    @classmethod
     def getFields(cls):
         return cls.__fields
 

@@ -6,8 +6,17 @@ from Picture import *
 
 class PictureBox(list):
     def showHeader(self):
-        for field in Picture.getFields(Picture):
-            print(field.getLabel())
+        fields=list()
+        # creiamo una lista dove mettere le etichette dei campi
+        for field in Picture.getFields():
+            fields.append(field.getLabel())
+            # aggiungiamo un'etichetta alla lista
+        print(*fields, sep=' | ')
+        # visualizziamo tutte le etichette della lista
+        # *fields trasforma l'oggetto fields in un elenco, come se
+        # scrivessimo
+        # print(fields[0], fields[1], fields[2], ...)
+        
     def showPictures(self):
         for i in range(len(self)):
             self[i].outputData()
