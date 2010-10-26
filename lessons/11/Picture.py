@@ -53,6 +53,8 @@ class Picture(object):
         print(field.getLabel() + ': ', self.getAttrByName(fieldname))
 
     @classmethod
+    # un metodo "di classe" riceve come primo parametro un riferimento
+    # alla classe
     def getFields(cls):
         return cls.__fields
 
