@@ -1,0 +1,7 @@
+# configuration file for processknols.sh
+
+TITLE="Programmazione orientata agli oggetti con Python"
+BASE=http://knol.google.com
+ZIPFILE=/home/loris/python/oopython/docs/oopython_lessons.zip
+SOURCE="$BASE/k/loris-tissino/python-e-la-programmazione-orientata/3s6hcvstzhgkg/30"
+
