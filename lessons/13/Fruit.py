@@ -1,18 +1,21 @@
 class Fruit(object):
-    __salad = {'quantity': 0} # attributo di classe, vale per tutte le istanze
-    # in questo esempio, è un dizionario, di cui ci interessa un solo valore
-    # qui lo rendiamo privato
+    __salad = 0
+
+    @classmethod
+    def __incSaladCount(cls):
+        cls.__salad += 1
+
+    @classmethod
+    def getSaladCount(cls):
+        return cls.__salad
 
     def __init__(self, name):
         self.setName(name)
         self.__alerts = []
-        self.__salad['quantity'] += 1
+        self.__incSaladCount()
 
     def __str__(self):
         return self.getName()
-
-    def getSaladInfoByKey(self, key):
-        return self.__salad[key]
 
     def getName(self):
         return self.name
@@ -49,6 +52,8 @@ def main():
     print('quality %d' % myapple.quality)
     print('Allarmi: ', *myapple.getAlerts())
     myapple.quality = -20
+
+    
     print('quality %d' % myapple.quality)
     print('Allarmi: ', *myapple.getAlerts())
     
