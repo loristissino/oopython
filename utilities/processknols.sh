@@ -13,6 +13,10 @@ for url in $(cat urls); do
 	NUMBER=$((NUMBER + 1))
 	FILENAME=$(printf "%03d.html" $NUMBER)
 	wget "$BASE$url" -O $FILENAME 2>/dev/null
+	
+	sed -i '/\<head/ a\
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">' $FILENAME
+
 	echo "done."
 done
 
