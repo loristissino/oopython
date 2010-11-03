@@ -11,4 +11,6 @@ print("f._bar: %d" % f._bar)
 
 print(f.__dict__)
 print("f.__bar (accesso indiretto): %d" % f.__dict__['_Foo__bar'])
+print("f.__bar (accesso con nome della classe): %d" % f._Foo__bar)
+
 
