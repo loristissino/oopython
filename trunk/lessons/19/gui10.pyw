@@ -5,7 +5,7 @@ from tkinter import *
 class Application(object):
     def __init__(self, parent):
 
-        self.Canvas = Canvas(parent, width=300, height=400)
+        self.Canvas = Canvas(parent, width=300, height=150)
         self.Canvas['background'] = 'white'
         self.Canvas.pack()
 

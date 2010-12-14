@@ -2,18 +2,12 @@
 
 from tkinter import *
 
-def str2int(s):
-    try:
-        k=int(s)
-        return k
-    except:
-        return 0
 
 class Application(object):
     def __init__(self, parent):
         
         self.propertyname = StringVar()
-        self.propertyname.set('selectforeground') # valore di default
+        self.propertyname.set('foreground') # valore di default
         self.propertyvalue = StringVar()
         self.propertyvalue.set('green')
         self.parent = parent
