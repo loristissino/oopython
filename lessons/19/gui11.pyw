@@ -20,7 +20,7 @@ class Application(object):
         self.b5 = Button(self.MiddleFrame, text="5")
         self.b6 = Button(self.MiddleFrame, text="6")
 
-        for widget in self.b4, self.b5, s.elf.b6:
+        for widget in self.b4, self.b5, self.b6:
             widget.pack({'side':'left'})
         
         self.b7 = Button(self.BottomFrame, text="7")
