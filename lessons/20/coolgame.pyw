@@ -36,6 +36,8 @@ class Application(object):
         self._gameover=True
         self.Canvas.itemconfig(self.obj_id, fill='yellow')
         self.Canvas['cursor']='pirate'
+        for b in self.UpButton, self.DownButton, self.LeftButton, self.RightButton:
+            b['state']='disabled'
         messagebox.showinfo(title='THE BIG GAME', message='--- GAME OVER ---')
 
     def CheckBorders(self):
@@ -63,14 +65,18 @@ class Application(object):
         self.obj_id = self.Canvas.create_oval(120, 80, 180, 120, width=2, fill='red')
 
         self.UpFrame=Frame(self.parent)
-        self.UpButton = Button(self.UpFrame, text="UP", command=self.UpButton_Click).pack()
+        self.UpButton = Button(self.UpFrame, text="UP", command=self.UpButton_Click)
+        self.UpButton.pack()
         self.UpFrame.pack()
         self.MiddleFrame=Frame(self.parent)
-        self.LeftButton = Button(self.MiddleFrame, text="LEFT", command=self.LeftButton_Click).pack({'side':'left'})
-        self.RightButton = Button(self.MiddleFrame, text="RIGHT", command=self.RightButton_Click).pack({'side':'left'})
+        self.LeftButton = Button(self.MiddleFrame, text="LEFT", command=self.LeftButton_Click)
+        self.LeftButton.pack({'side':'left'})
+        self.RightButton = Button(self.MiddleFrame, text="RIGHT", command=self.RightButton_Click)
+        self.RightButton.pack({'side':'left'})
         self.MiddleFrame.pack()
         self.BottomFrame = Frame(self.parent)
-        self.DownButton = Button(self.BottomFrame, text="DOWN", command=self.DownButton_Click).pack()
+        self.DownButton = Button(self.BottomFrame, text="DOWN", command=self.DownButton_Click)
+        self.DownButton.pack()
         self.BottomFrame.pack()
 
         self.OptionsFrame=Frame(self.parent)
