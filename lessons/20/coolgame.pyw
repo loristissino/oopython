@@ -28,31 +28,47 @@ class Application(object):
 
     def MoveObjectDown(self):
         if not self._gameover:
-            self.Canvas.move(self.obj_id, 0, self.FallY.get())
+            self.Canvas.move(self.obj_id, 0, self.FALLY)
             self.CheckBorders()
-            self.parent.after(500, self.MoveObjectDown)
+            self.parent.after(self.Delay.get(), self.MoveObjectDown)
 
     def GameOver(self):
         self._gameover=True
         self.Canvas.itemconfig(self.obj_id, fill='yellow')
         self.Canvas['cursor']='pirate'
+        self.ToggleButtons('disabled')
+        messagebox.showinfo(title=self.TITLE, message='--- GAME OVER ---')
+
+    def ToggleButtons(self, state):
         for b in self.UpButton, self.DownButton, self.LeftButton, self.RightButton:
-            b['state']='disabled'
-        messagebox.showinfo(title='THE BIG GAME', message='--- GAME OVER ---')
+            b['state']=state
+
+    def GameWon(self):
+        self._gameover=True
+        self.Canvas.itemconfig(self.obj_id, fill='white')
+        self.Canvas['cursor']='pirate'
+        self.ToggleButtons('disabled')
+        messagebox.showinfo(title=self.TITLE, message='--- YOU WON! ---')
+        
 
     def CheckBorders(self):
         x1,y1,x2,y2=self.Canvas.coords(self.obj_id)
         if y2>200:
             self.GameOver()
+        if y1<0:
+            self.GameWon()
         
     def __init__(self, parent):
         self.MOVEX=2
         self.MOVEY=2
-        self.FALLY_SLOW=1
-        self.FALLY_FAST=3
+        self.FALLY=1
+        self.DELAY_VERYFAST=40
+        self.DELAY_FAST=100
+        self.DELAY_SLOW=300
+        self.TITLE='THE BIG GAME'
 
-        self.FallY=IntVar()
-        self.FallY.set(self.FALLY_SLOW)
+        self.Delay=IntVar()
+        self.Delay.set(self.DELAY_SLOW)
 
         self.parent= parent
         self._gameover = False
@@ -80,8 +96,9 @@ class Application(object):
         self.BottomFrame.pack()
 
         self.OptionsFrame=Frame(self.parent)
-        self.SlowRadioButton=Radiobutton(self.OptionsFrame, text='Slow', variable=self.FallY, value=self.FALLY_SLOW).pack({'side':'left'})
-        self.FastRadioButton=Radiobutton(self.OptionsFrame, text='Fast', variable=self.FallY, value=self.FALLY_FAST).pack({'side':'left'})
+        self.SlowRadioButton=Radiobutton(self.OptionsFrame, text='Slow', variable=self.Delay, value=self.DELAY_SLOW).pack({'side':'left'})
+        self.FastRadioButton=Radiobutton(self.OptionsFrame, text='Fast', variable=self.Delay, value=self.DELAY_FAST).pack({'side':'left'})
+        self.VeryFastRadioButton=Radiobutton(self.OptionsFrame, text='Very fast', variable=self.Delay, value=self.DELAY_VERYFAST).pack({'side':'left'})
         self.OptionsFrame.pack()
 
         #binding degli eventi da tastiera
@@ -91,13 +108,16 @@ class Application(object):
         self.parent.bind('<Right>', self.RightButton_Click)
         self.parent.bind('q', self.Quit)
 
-        self.QuitButton=Button(parent, text='quit')
+        self.QuitButton=Button(parent, text='Quit')
         self.QuitButton['command'] = self.Quit
+        self.QuitButton['underline']=0
         self.QuitButton.pack({'pady':20})
 
-        self.parent.after(500, self.MoveObjectDown)
-
+        self.parent.after(self.Delay.get(), self.MoveObjectDown)
+        print(self.Delay.get())
         self.setMenu()
+
+        self.parent.title(self.TITLE)
 
 
     def setMenu(self):
@@ -134,7 +154,7 @@ class Application(object):
             messagebox.showinfo(title='File saving', message='I should save to file ' + filename)
 
     def HelpAbout(self):
-        print(dir(filedialog))
+        pass
 
     
         
