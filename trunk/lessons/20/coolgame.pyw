@@ -119,6 +119,8 @@ class Application(object):
 
         self.parent.title(self.TITLE)
 
+        self.parent.geometry('300x400')
+
 
     def setMenu(self):
         MenuBar = Menu(self.parent)
