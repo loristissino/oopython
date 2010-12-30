@@ -29,6 +29,7 @@ class FractionWidget(object):
                                textvariable=self.DenominatorValue,
                                width=self.width,
                                justify="right",
+                               validate="key",
                                validatecommand=vcmd)
         self.Numerator.pack(side="top", padx=5, pady=5)
         self.FractionLine.pack(side="top")
@@ -64,6 +65,14 @@ class FractionWidget(object):
             self.setNumerator(value)
         if key=='denominator':
             self.setDenominator(value)
+
+    def __getitem__(self, key):
+        if key in ('background', 'bg', 'borderwidth', 'bd', 'relief'):
+            return self.MainFrame[key]
+        if key=='numerator':
+            return self.getNumerator()
+        if key=='denominator':
+            return self.getDenominator()
             
     def pack(self, *args, **kwargs):
         self.MainFrame.pack(*args, **kwargs)
@@ -100,7 +109,8 @@ class Application(object):
     def SimplifyButton_Click(self):
         if self.Fraction.getDenominator()==0:
             messagebox.showinfo(message='Non è ammesso il denominatore zero.')
-        f=fractions.Fraction(self.Fraction.getNumerator(), self.Fraction.getDenominator())
+        f=fractions.Fraction(self.Fraction['numerator'], self.Fraction.getDenominator())
+        # si può accedere ai valori sia con le parentesi quadre sia con il metodo specifico
         self.Fraction.setNumerator(f.numerator)
         self.Fraction.setDenominator(f.denominator)
         
