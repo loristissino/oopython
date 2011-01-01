@@ -41,9 +41,8 @@ class Application(object):
             self.buttons.append(b)
 
     def BuildButtonAction(self, number):
-        action = lambda n=number: self.ChangeButtonColor(n)
-        return action
-
+        return lambda : self.ChangeButtonColor(number)
+        
     def ChangeButtonColor(self, number):
         self._SwitchColor(self.buttons[number])
         #self._RemoveButton(self.buttons[number])
