@@ -56,4 +56,8 @@ name="Mario"
 for i in range(len(name)-1,-1,-1):
   print(name[i])
 
+print("*** Alternativa per visualizzare i caratteri di una stringa alla rovescia")
+name="Mario"
+for i in range(1,len(name)+1): # ciclo da 1 alla lunghezza della stringa +1
+  print(-i, name[-i]) # uso l'opposto di i
 
