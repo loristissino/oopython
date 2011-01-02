@@ -17,12 +17,15 @@ def capitalizePersonNames(c):
     else:
         return c[0]
     
-
 names=list(map(capitalizePersonNames, customers))
 print(names)
 
 names=list(map(lambda v: v[0] if v[3]=='j' else ' '.join(v[0:2]).upper(), customers))
 print(names)
+
+print('*** Elenco delle persone fisiche ***')
+people=list(filter(lambda v: v[3]=='p', customers))
+print(people)
 
 
 
