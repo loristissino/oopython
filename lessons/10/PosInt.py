@@ -16,4 +16,8 @@ class PosInt(int):
 if __name__ == '__main__':
     from basic_io import *
     a=checked_input('inserisci un valore positivo: ', PosInt)
-    print(a, type(a), dir(a))
+    print(a, type(a))
+
+    n=PosInt(12)
+    print(dir(n))
+    
