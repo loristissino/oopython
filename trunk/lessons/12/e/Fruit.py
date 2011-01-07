@@ -8,7 +8,9 @@ class Fruit(object):
         self.salad.append(self)
 
     def __str__(self):
-        return self.getName()
+        # questo metodo "magico" restituisce una stringa
+        # che viene usata quando si fa un print, o in occasioni del genere
+        return self.getName()    
 
     def getName(self):
         return self.name
@@ -16,9 +18,6 @@ class Fruit(object):
     def setName(self, value):
         self.name = value
         return self
-
-    def getIdx(self):
-        return self.__idx
 
     def setQuality(self, value):
         if 0 <= value <= 100: 
@@ -31,9 +30,6 @@ class Fruit(object):
     def __addAlert(self, value):
         self.__alerts.append(value)
         return self
-
-    def getName(self):
-        return self.name
 
     def getQuality(self):
         return self.__quality
