@@ -23,7 +23,7 @@ if __name__=='__main__':
 
     info = {'age': 32, 'name': 'mario'}
     describe_person(**info)
-    # chiamata con i parametri in un dizionario e "sequence unpacking"
+    # chiamata con i parametri in un dizionario e "dict unpacking"
     # notare che in questo caso si mettono due asterischi
     
 

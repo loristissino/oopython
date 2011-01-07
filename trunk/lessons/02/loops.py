@@ -25,6 +25,11 @@ fruits=["arancia", "mela", "pera", "ananas"]
 for fruit in fruits:
     print(fruit)
 
+print("*** Ciclo for basato su diversi oggetti iterabili percorsi in parallelo")
+colors=["arancio", "bianco", "bianco", "giallo"]
+for fruit, color in zip(fruits, colors):
+    print('Il frutto %s ha la polpa color %s.' % (fruit, color))
+
 print("*** Ciclo for basato su oggetti iterabili")
 sentence="ma che bel castello marcondirodirondello..."
 for letter in sentence:

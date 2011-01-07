@@ -8,7 +8,16 @@ while True:
     print(line, end='')
 file_in.close()
 
-
+#alternativa:
+file_in = open('loremipsum.txt')
+jobdone=False
+while not jobdone:
+    line = file_in.readline()
+    if line == '':
+        jobdone=True
+    else:
+        print(line, end='')
+file_in.close()
 
 '''Scrittura'''
 
