@@ -39,11 +39,12 @@ class Application(object):
             b['command']=self.BuildButtonAction(i)
             b.pack()
             self.buttons.append(b)
-
+    
+    
     def BuildButtonAction(self, number):
-        return lambda : self.ChangeButtonColor(number)
-        
-    def ChangeButtonColor(self, number):
+        return lambda : self.Button_Click(number)    
+    
+    def Button_Click(self, number):
         self._SwitchColor(self.buttons[number])
         #self._RemoveButton(self.buttons[number])
         

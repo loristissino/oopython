@@ -19,7 +19,13 @@ class Field():
         return self.__alignment
     def getMethod(self):
         return self.__method
+        # il metodo della classe self.__class_constraint da usare
+        # per la convalida dei dati (se necessario)
+        # (giusto un esempio per far capire che se si vuole si possono
+        # aggiungere altri campi per fronteggiare nuove necessità)
 
     def setLabel(self, v):
         self.__label = v
         return self
+
+    # gli altri metodi vanno implementati...
