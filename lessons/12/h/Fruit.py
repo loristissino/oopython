@@ -14,18 +14,12 @@ class Fruit(object):
         self.__alerts = []
         self.__incSaladCount()
 
-    def __str__(self):
-        return self.getName()
-
     def getName(self):
         return self.name
 
     def setName(self, value):
         self.name = value
         return self
-
-    def getIdx(self):
-        return self.__idx
 
     def setQuality(self, value):
         if 0 <= value <= 100: 
@@ -38,9 +32,6 @@ class Fruit(object):
     def __addAlert(self, value):
         self.__alerts.append(value)
         return self
-
-    def getName(self):
-        return self.name
 
     def getQuality(self):
         return self.__quality

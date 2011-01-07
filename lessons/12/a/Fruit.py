@@ -28,7 +28,7 @@ def main():
     # accesso agli attributi tramite funzione "getter"
 
     print(myapple.quality)
-    # accessodiretto all'attributo
+    # accesso diretto all'attributo
 
     myorange = Fruit('arancia siciliana')
     myorange.quality = -20

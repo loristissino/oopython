@@ -24,12 +24,17 @@ def main():
     print('Nome: %s\nqualità: %d' % (myapple.getName(), myapple.getQuality()))
 
     # myapple.__quality = 20
-    # non possibile, visto che l'attributo è privato
-
     # print(myapple.__quality)
-    # accesso diretto all'attributo
-    # non possibile, visto che l'attributo è privato
 
+    # L'accesso diretto agli attributi privati è:
+    # *) non possibile, se sono stati definiti gli attributi con __slots__
+    # *) non raccomandabile, negli altri casi
+
+    # Ad ogni modo, se da fuori si modifica un attributo privato
+    # il risultato non è quello che si potrebbe pensare...
+    # vedi http://knol.google.com/k/loris-tissino/12-attributi-privati-e-pubblici-di/3s6hcvstzhgkg/43?collectionId=3s6hcvstzhgkg.30&position=12#Uno_o_due_underscore(3F)_(28)piccola_nota_sul_name_mangling(29)
+    
+    
 
 if __name__ == '__main__':
     main()
