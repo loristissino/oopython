@@ -1,4 +1,4 @@
-'''Lettura, primo approccio'''
+print('== Lettura, primo approccio ==')
 
 file_in = open('loremipsum.txt')
 while True:
@@ -19,7 +19,7 @@ while not jobdone:
         print(line, end='')
 file_in.close()
 
-'''Scrittura'''
+print('== Scrittura ==')
 
 lines = (
     'Aenean non nulla ut neque pharetra faucibus feugiat sit amet erat.',
@@ -34,7 +34,7 @@ for line in lines:
 file_out.close()
 
 
-'''Aggiunta'''
+print('== Aggiunta ==')
 
 newlines = (
     'Vestibulum viverra molestie nulla, sed aliquet urna malesuada in.',
@@ -49,7 +49,7 @@ for line in newlines:
 file_out.close()
 
 
-'''Lettura, secondo approccio'''
+print('== Lettura, secondo approccio ==')
 
 file_written = open('aenannon.txt')
 
@@ -57,9 +57,8 @@ for line in file_written:
     print(line, end='')
 file_written.close()
 
-'''Lettura, terzo approccio'''
-
+print('== Lettura, terzo approccio ==')
 with open('aenannon.txt') as f:
     lines = f.readlines()
-    for line in lines:
-        print(line, end='')
+for line in lines:
+    print(line, end='')
