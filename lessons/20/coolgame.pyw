@@ -1,5 +1,8 @@
 #!/usr/bin/env python3.1
 
+AUTHOR="Loris Tissino"
+LICENCE="GNU GPL v.3"
+
 from tkinter import *
 from tkinter import messagebox
 from tkinter import filedialog
@@ -156,8 +159,18 @@ class Application(object):
             messagebox.showinfo(title='File saving', message='I should save to file ' + filename)
 
     def HelpAbout(self):
-        pass
+        self.AboutWindow = Toplevel(self.parent, width=800)
+        self.AboutWindow.title('info')
+        self.AuthorLabel = Label(self.AboutWindow, text='Author: ' + AUTHOR)
+        self.AuthorLabel.pack()
+        self.LicenceLabel = Label(self.AboutWindow, text='Licence: ' + LICENCE)
+        self.LicenceLabel.pack()
+        self.CloseAboutWindowButton = Button(self.AboutWindow, text='Close', command=self.CloseAboutWindowButton_Click)
+        self.CloseAboutWindowButton.pack()
+        self.AboutWindow.grab_set()  # questo rende la finestra "modale"
 
+    def CloseAboutWindowButton_Click(self):
+        self.AboutWindow.destroy()
     
         
 def main():
