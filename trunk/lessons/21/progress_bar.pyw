@@ -61,7 +61,7 @@ class Application(object):
     def __init__(self, parent):
         
         self.parent = parent
-        self.PB = ProgressBar(self.parent, progress=22, foreground="red", width=400)
+        self.PB = ProgressBar(self.parent, progress=0, foreground="red", width=400)
         self.PB.pack()
 
         self.forward = Button(self.parent, text='Forward', command=self.ForwardClick)
@@ -70,6 +70,13 @@ class Application(object):
         self.back = Button(self.parent, text='Back', command=self.BackClick)
         self.back.pack()
 
+        self.start = Button(self.parent, text='Start', command=self.StartClick)
+        self.start.pack()
+
+        self.stop = Button(self.parent, text='Stop', command=self.StopClick)
+        self.stop['state']='disabled'
+        self.stop.pack()
+
     def ForwardClick(self):
         print('forward')
         self.PB.setProgressPercent(self.PB.getProgressPercent()+PROGRESS)
@@ -77,7 +84,27 @@ class Application(object):
     def BackClick(self):
         print('back')
         self.PB.setProgressPercent(self.PB.getProgressPercent()-PROGRESS)
-        
+
+    def StartClick(self):
+        self.go=True
+        self.stop['state']='active'
+        self.DoSomething()
+
+    def StopClick(self):
+        self.go=False
+
+    def DoSomething(self):
+        if self.PB.getProgressPercent() % 10 == 0:
+            # every time the Percent is a multiple of 10 it will
+            # wait a little...
+            self.DoSomethingElse()
+        self.PB.setProgressPercent(self.PB.getProgressPercent()+1)
+        if self.go:
+            self.parent.after(100, self.DoSomething)
+
+    def DoSomethingElse(self):
+        print('Doing something else...')
+        self.parent.after(1000, None)
 
 def main():
     root = Tk()
