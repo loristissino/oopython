@@ -1,0 +1,1 @@
+Simple program built to show how to use Python and its OOP features.
